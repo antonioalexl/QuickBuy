@@ -11,5 +11,7 @@ namespace QuickBuy.Dominio.Entidades
         public DateTime DataPedido  {get;set;}
 
         public int UsuarioId { get; set; }
+
+        public ICollection<ItemPedido> ItensPedido { get; set; }
     }
 }

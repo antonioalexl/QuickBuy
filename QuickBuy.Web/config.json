@@ -1,0 +1,9 @@
+{
+  "ConnectionStrings": {
+
+    "SqlServerConnection": "Data Source=CLKADEVSQL1;Initial Catalog=dbtestealex;Integrated Security=SSPI; Application Name=teste"
+
+  }
+}
+
+

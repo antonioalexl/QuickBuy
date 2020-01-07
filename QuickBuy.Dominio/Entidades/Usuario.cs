@@ -14,11 +14,18 @@ namespace QuickBuy.Dominio.Entidades
 
         public string SobreNome { get; set; }
 
-        public ICollection<Pedido> Pedidos { get; set; }
+        public virtual ICollection<Pedido> Pedidos { get; set; }
 
         public override void Validade()
         {
-            throw new System.NotImplementedException();
+            if (string.IsNullOrEmpty(Email))
+            {
+                AdicionarCritica("Email nao foi informado");
+            }
+            if (string.IsNullOrEmpty(Senha))
+            {
+                AdicionarCritica("Senha nao foi informado");
+            }
         }
     }
 }

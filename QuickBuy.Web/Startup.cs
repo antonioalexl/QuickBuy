@@ -32,7 +32,7 @@ namespace QuickBuy.Web
             // In production, the Angular files will be served from this directory
             var connectionString = Configuration.GetConnectionString("SqlServerConnection");
 
-            services.AddDbContext<QuickBuyContexto>(option => option.UseSqlServer(connectionString, m => m.MigrationsAssembly("QuickBuy.Repositorio")));
+            services.AddDbContext<QuickBuyContexto>(option => option.UseLazyLoadingProxies().UseSqlServer(connectionString, m => m.MigrationsAssembly("QuickBuy.Repositorio")));
             //
             services.AddSpaStaticFiles(configuration =>
             {

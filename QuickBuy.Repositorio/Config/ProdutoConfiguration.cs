@@ -13,9 +13,10 @@ namespace QuickBuy.Repositorio.Config
         public void Configure(EntityTypeBuilder<Produto> builder)
         {
             builder.HasKey(p => p.Id);
-            builder.Property(p => p.Nome).IsRequired().HasMaxLength(50);
-            builder.Property(p => p.Descricao).IsRequired().HasMaxLength(400);
-            builder.Property(p => p.Preco).IsRequired();
+            builder.Property(f => f.Id).ValueGeneratedOnAdd();
+            builder.Property(p => p.Nome).IsRequired().HasMaxLength(50).HasColumnType("varchar(400)");
+            builder.Property(p => p.Descricao).IsRequired().HasMaxLength(400).HasColumnType("varchar(400)");
+            builder.Property(p => p.Preco).IsRequired().HasColumnType("decimal(10,2)");
         }
     }
 }

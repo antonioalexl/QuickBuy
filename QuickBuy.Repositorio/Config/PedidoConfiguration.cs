@@ -14,12 +14,14 @@ namespace QuickBuy.Repositorio.Config
         {
 
             builder.HasKey(p => p.Id);
+
+            builder.Property(f => f.Id).ValueGeneratedOnAdd();
             builder.Property(p => p.DataPedido).IsRequired();
             builder.Property(p => p.DataPrevisaoEntrega).IsRequired();
-            builder.Property(p => p.CEP).IsRequired().HasMaxLength(10);
-            builder.Property(p => p.Cidade).IsRequired().HasMaxLength(100);
-            builder.Property(p => p.Estado).IsRequired().HasMaxLength(100);
-            builder.Property(p => p.EnderecoCompleto).IsRequired().HasMaxLength(100);
+            builder.Property(p => p.CEP).IsRequired().HasMaxLength(10).HasColumnType("varchar(10)");
+            builder.Property(p => p.Cidade).IsRequired().HasMaxLength(100).HasColumnType("varchar(100)"); 
+            builder.Property(p => p.Estado).IsRequired().HasMaxLength(100).HasColumnType("varchar(100)"); 
+            builder.Property(p => p.EnderecoCompleto).IsRequired().HasMaxLength(100).HasColumnType("varchar(100)"); 
             builder.Property(p => p.NumeroEndereco).IsRequired();
 
             builder.HasOne(p => p.FormaPagamento);

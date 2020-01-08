@@ -4,6 +4,7 @@ using QuickBuy.Dominio.ObjetoDeValor;
 using QuickBuy.Repositorio.Config;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace QuickBuy.Repositorio.Contexto
@@ -24,11 +25,17 @@ namespace QuickBuy.Repositorio.Contexto
             modelBuilder.ApplyConfiguration(new ItemPedidoConfiguration());
             modelBuilder.ApplyConfiguration(new FormaPagamentoConfiguration());
 
-            modelBuilder.Entity<FormaPagamento>().HasData(new FormaPagamento() { Id = 0, Descricao = "Nao Definido" },
-                new FormaPagamento() { Id = 1, Descricao = "Boleto" },
-                new FormaPagamento() { Id = 2, Descricao = "Cartao Credito" },
-                new FormaPagamento() { Id = 3, Descricao = "Boleto" });
+            modelBuilder.Entity<FormaPagamento>().HasData(new FormaPagamento() { Id = -1, Nome = "Nao", Descricao = "Nao Definido" },
+                new FormaPagamento() { Id = 1, Nome = "Boleto", Descricao = "Boleto" },
+                new FormaPagamento() { Id = 2, Nome = "Cartao ", Descricao = "Cartao Credito" },
+                new FormaPagamento() { Id = 3, Nome = "Boleto", Descricao = "Boleto" });
 
+
+
+            /* foreach (var pb in modelBuilder.Model.GetEntityTypes().SelectMany(t => t.GetProperties()).Where(p => p.ClrType == typeof(string)).Select(p => modelBuilder.Entity(p.DeclaringEntityType.ClrType).Property(p.Name)))
+             {
+                 pb.HasColumnType("varchar");
+             }*/
 
 
 

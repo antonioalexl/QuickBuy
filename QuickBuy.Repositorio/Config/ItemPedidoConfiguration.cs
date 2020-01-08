@@ -13,11 +13,11 @@ namespace QuickBuy.Repositorio.Config
         public void Configure(EntityTypeBuilder<ItemPedido> builder)
         {
             builder.HasKey(i => i.Id);
-
+            builder.Property(f => f.Id).ValueGeneratedOnAdd();
             builder.Property(i => i.ProdutoId).IsRequired();
             builder.Property(i => i.Quantidade).IsRequired();
 
-            builder.Property(i => i.Quantidade).IsRequired();
+            
         }
     }
 }

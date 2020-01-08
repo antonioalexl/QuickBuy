@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace QuickBuy.Repositorio.Migrations
 {
-    public partial class PrimeiraVersao : Migration
+    public partial class teste1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,8 +13,8 @@ namespace QuickBuy.Repositorio.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome = table.Column<string>(maxLength: 50, nullable: false),
-                    Descricao = table.Column<string>(maxLength: 100, nullable: false)
+                    Nome = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    Descricao = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -27,9 +27,9 @@ namespace QuickBuy.Repositorio.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome = table.Column<string>(maxLength: 50, nullable: false),
-                    Descricao = table.Column<string>(maxLength: 400, nullable: false),
-                    Preco = table.Column<decimal>(nullable: false)
+                    Nome = table.Column<string>(type: "varchar(400)", maxLength: 50, nullable: false),
+                    Descricao = table.Column<string>(type: "varchar(400)", maxLength: 400, nullable: false),
+                    Preco = table.Column<decimal>(type: "decimal(10,2)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -42,10 +42,10 @@ namespace QuickBuy.Repositorio.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Email = table.Column<string>(maxLength: 50, nullable: false),
-                    Senha = table.Column<string>(maxLength: 400, nullable: false),
-                    Nome = table.Column<string>(maxLength: 50, nullable: false),
-                    SobreNome = table.Column<string>(maxLength: 50, nullable: false)
+                    Email = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    Senha = table.Column<string>(type: "varchar(400)", maxLength: 400, nullable: false),
+                    Nome = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    SobreNome = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -61,10 +61,10 @@ namespace QuickBuy.Repositorio.Migrations
                     DataPedido = table.Column<DateTime>(nullable: false),
                     UsuarioId = table.Column<int>(nullable: false),
                     DataPrevisaoEntrega = table.Column<DateTime>(nullable: false),
-                    CEP = table.Column<string>(maxLength: 10, nullable: false),
-                    Estado = table.Column<string>(maxLength: 100, nullable: false),
-                    Cidade = table.Column<string>(maxLength: 100, nullable: false),
-                    EnderecoCompleto = table.Column<string>(maxLength: 100, nullable: false),
+                    CEP = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: false),
+                    Estado = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
+                    Cidade = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
+                    EnderecoCompleto = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
                     NumeroEndereco = table.Column<int>(nullable: false),
                     FormaPagamentoId = table.Column<int>(nullable: false)
                 },

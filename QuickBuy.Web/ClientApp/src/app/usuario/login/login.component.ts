@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../modelo/usuario';
+import { Router, ActivatedRoute } from "@angular/router";
 
 
 @Component({
@@ -7,13 +8,16 @@ import { Usuario } from '../../modelo/usuario';
   templateUrl: "./login.component.html",
   styleUrls: ["./login.component.css"]
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   public usuario;
   public usuarioAutenticado: boolean;
+  public returnUrl: string;
 
-
-  constructor() { this.usuario = new Usuario();}
+  constructor(private router: Router, private activatedRouter: ActivatedRoute) {
+    this.usuario = new Usuario();
+    this.returnUrl = this.activatedRouter.snapshot.queryParams['returnUrl'];
+  }
 
 
   public email = "antonio.alex@hotmail.com"
@@ -21,7 +25,10 @@ export class LoginComponent {
 
   entrar(): void {
 
-    
+    if (this.usuario.email == "antonio.alex@hotmail.com" && this.usuario.senha == "123456") {
+      sessionStorage.setItem("usuario-autenticado", "1");
+      this.router.navigate([this.returnUrl]);
+    }
 
 
     alert(this.email);

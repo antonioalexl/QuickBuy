@@ -10,14 +10,21 @@ import { Router, ActivatedRoute } from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
+  
   public usuario;
   public usuarioAutenticado: boolean;
   public returnUrl: string;
 
   constructor(private router: Router, private activatedRouter: ActivatedRoute) {
-    this.usuario = new Usuario();
-    this.returnUrl = this.activatedRouter.snapshot.queryParams['returnUrl'];
+    
+
   }
+
+  ngOnInit(): void {
+    this.returnUrl = this.activatedRouter.snapshot.queryParams['returnUrl'];
+    this.usuario = new Usuario();
+  }
+
 
 
   public email = "antonio.alex@hotmail.com"

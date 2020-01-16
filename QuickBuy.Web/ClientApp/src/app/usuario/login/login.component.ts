@@ -41,6 +41,14 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem("usuario-autenticado", "1");
         sessionStorage("email-usuario", usuarioRetorno.email);
         this.router.navigate([this.returnUrl]);
+
+        if (this.returnUrl == null) {
+          this.router.navigate(['/']);
+        }
+        else {
+          this.router.navigate([this.returnUrl]);
+        }
+
       },
       err => {
 

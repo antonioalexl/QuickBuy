@@ -49,7 +49,18 @@
 
 
 
-    <button class="btn btn-primary  btn-block" type="submit" (click)="entrar()">Entrar</button>
+    <button class="btn btn-primary  btn-block" type="submit" (click)="entrar()" [disabled] ="ativar_spinner">
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
+      Entrar
+    </button>
+
+    <!--<button class="btn btn-primary" type="button" disabled>
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      <span class="sr-only">Loading...</span>
+    </button>-->
+
+
+
     <div class="alert-danger" *ng-if="mensagem">
       {{ mensagem }}
 

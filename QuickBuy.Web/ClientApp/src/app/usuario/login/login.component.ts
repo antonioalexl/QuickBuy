@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   public usuarioAutenticado: boolean;
   public returnUrl: string;
   public mensagem: string;
+  public ativar_spinner: boolean;
 
   constructor(private router: Router, private activatedRouter: ActivatedRoute, private usuarioServico: UsuarioServico) {
 
@@ -33,14 +34,12 @@ export class LoginComponent implements OnInit {
   public senha = ""
 
   entrar(): void {
+    this.ativar_spinner = true;
 
     this.usuarioServico.verificarUsuario(this.usuario).subscribe(
-      data => {
-        var usuarioRetorno: Usuario;
-        usuarioRetorno = data;
-        sessionStorage.setItem("usuario-autenticado", "1");
-        sessionStorage("email-usuario", usuarioRetorno.email);
-        this.router.navigate([this.returnUrl]);
+      usuario_json => {
+
+        this.usuarioServico.usuario = usuario_json;
 
         if (this.returnUrl == null) {
           this.router.navigate(['/']);
@@ -49,12 +48,16 @@ export class LoginComponent implements OnInit {
           this.router.navigate([this.returnUrl]);
         }
 
+        this.ativar_spinner = false;
+
       },
       err => {
 
         console.log(err.error);
         this.mensagem = err.error;
+        this.ativar_spinner = false;
       }
+     
     );
 
     //if (this.usuario.email == "antonio.alex@hotmail.com" && this.usuario.senha == "123456") {

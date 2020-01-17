@@ -37,22 +37,34 @@
            'is-valid' : senha.valid && (senha.dirty || senha.touched)
             }"
            class="form-control mb-2"
-           #senha="ngModel"           
+           #senha="ngModel"
            password
-           required/>
+           required />
 
     <div class="invalid-feedback mb-2" *ng-if="senha.invalid && (senha.dirty || senha.touched)">
       <div *ngIf="senha.errors.required">
-        Email e de preenchimento obrigatorio
-      </div>
-      <div *ngIf="senha.errors.password">
-        Email nao esta no formato correto
+        Senha deve ser informada
       </div>
     </div>
 
 
 
-    <button class="btn btn-primary  btn-block" type="submit" (click)="entrar()">Entrar</button>
+    <button class="btn btn-primary  btn-block" type="submit" (click)="entrar()" [disabled] ="ativar_spinner">
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
+      Entrar
+    </button>
+
+    <!--<button class="btn btn-primary" type="button" disabled>
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      <span class="sr-only">Loading...</span>
+    </button>-->
+
+
+
+    <div class="alert-danger" *ng-if="mensagem">
+      {{ mensagem }}
+
+    </div>
 
 
 

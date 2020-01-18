@@ -1,0 +1,115 @@
+<div class="text-center">
+  <form class="form-signin">
+    <h1 class="h4 mb-2">
+      Criar Conta
+    </h1>
+    <label for="inputEmail" class="sr-only">Email</label>
+    <input type="email"
+           id="inputEmail"
+           name="email"
+           [(ngModel)]="usuario.email"
+           [ngClass]="{
+           'is-invalid':email.invalid && (email.dirty || email.touched),
+           'is-valid' : email.valid && (email.dirty || email.touched)
+            }"
+           placeholder="Email"
+           class="form-control mb-2"
+           #email="ngModel"
+           email
+           required />
+    <div class="invalid-feedback mb-2" *ngIf="email.invalid && (email.dirty || email.touched)">
+      <div *ngIf="email.errors.required">
+        Email e de preenchimento obrigatorio
+      </div>
+      <div *ngIf="email.errors.email">
+        Email nao esta no formato correto
+      </div>
+    </div>
+
+    <label for="inputSenha" class="sr-only">Senha</label>
+    <input type="password"
+           id="inputSenha"
+           name="senha"
+           [(ngModel)]="usuario.senha"
+           placeholder="Senha"
+           [ngClass]="{
+           'is-invalid':senha.invalid && (senha.dirty || senha.touched),
+           'is-valid' : senha.valid && (senha.dirty || senha.touched)
+            }"
+           class="form-control mb-2"
+           #senha="ngModel"
+           password
+           required />
+
+    <div class="invalid-feedback mb-2" *ngIf="senha.invalid && (senha.dirty || senha.touched)">
+      <div *ngIf="senha.errors.required">
+        Senha deve ser informada
+      </div>
+    </div>
+    <label for="inputNome" class="sr-only">Nome</label>
+    <input type="text"
+           id="inputNome"
+           name="nome"
+           [(ngModel)]="usuario.nome"
+           [ngClass]="{
+           'is-invalid':nome.invalid && (nome.dirty || nome.touched),
+           'is-valid' : nome.valid && (nome.dirty || nome.touched)
+            }"
+           placeholder="Nome"
+           class="form-control mb-2"
+           #nome="ngModel"
+           required />
+    <div class="invalid-feedback mb-2" *ngIf="nome.invalid && (nome.dirty || nome.touched)">
+      <div *ngIf="nome.errors.required">
+        Nome e de preenchimento obrigatorio
+      </div>
+    </div>
+
+
+    <label for="inputSobreNome" class="sr-only">SobreNome</label>
+    <input type="text"
+           id="inputsobrenome"
+           name="sobrenome"
+           [(ngModel)]="usuario.sobrenome"
+             [ngClass]="{
+           'is-invalid':sobrenome.invalid && (sobrenome.dirty || sobrenome.touched),
+           'is-valid' : sobrenome.valid && (sobrenome.dirty || sobrenome.touched)
+            }"
+           placeholder="Informe o seu Nome"
+           class="form-control mb-2"
+           #sobrenome="ngModel"
+           required />
+    <div class="invalid-feedback mb-2" *ngIf="sobrenome.invalid && (sobrenome.dirty || sobrenome.touched)">
+      <div *ngIf="sobrenome.errors.required">
+        Nome e de preenchimento obrigatorio
+      </div>
+    </div>
+
+
+    <button class="btn btn-primary  btn-block" type="submit" (click)="cadastrar()" [disabled]="ativar_spinner">
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
+      Cadastrar
+    </button>
+    <div>
+
+  
+      <a class="nav-link text-dark" [routerLink]="['/entrar']">Entrar</a>
+    </div>
+
+    <!--<button class="btn btn-primary" type="button" disabled>
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    <span class="sr-only">Loading...</span>
+  </button>-->
+
+
+
+    <div class="alert-danger" *ngIf="mensagem">
+      {{ mensagem }}
+
+    </div>
+
+
+
+  </form>
+
+</div>

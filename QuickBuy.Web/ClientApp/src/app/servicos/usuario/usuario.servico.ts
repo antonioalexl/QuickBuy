@@ -6,7 +6,7 @@ import { Usuario } from "../../modelo/usuario";
 @Injectable({
 
   providedIn: "root"
-  
+
 })
 export class UsuarioServico {
 
@@ -32,14 +32,14 @@ export class UsuarioServico {
 
   public usuario_autenticado(): boolean {
     return this._usuario != null && this._usuario.email != "" && this.usuario.senha != "";
-        
+
   }
   public limpar_sessao() {
     sessionStorage.setItem("usuario-autenticado", "");
     this._usuario = null;
 
   }
-  
+
 
   public verificarUsuario(usuario: Usuario): Observable<Usuario> {
 
@@ -49,6 +49,20 @@ export class UsuarioServico {
       senha: usuario.senha
 
     }
+    return this.http.post<Usuario>(this.baseURL + "api/usuario", body, { headers });
+  }
+
+
+  public cadastrarUsuario(usuario: Usuario): Observable<Usuario> {
+
+    const headers = new HttpHeaders().set('content-type', 'application/json')
+    var body = {
+      email: usuario.email,
+      senha: usuario.senha,
+      nome: usuario.nome,
+      sobreNome: usuario.sobreNome
+    }
+
     return this.http.post<Usuario>(this.baseURL + "api/usuario", body, { headers });
   }
 

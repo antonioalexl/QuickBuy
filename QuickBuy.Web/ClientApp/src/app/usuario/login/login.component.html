@@ -17,7 +17,7 @@
            #email="ngModel"
            email
            required />
-    <div class="invalid-feedback mb-2" *ng-if="email.invalid && (email.dirty || email.touched)">
+    <div class="invalid-feedback mb-2" *ngIf="email.invalid && (email.dirty || email.touched)">
       <div *ngIf="email.errors.required">
         Email e de preenchimento obrigatorio
       </div>
@@ -41,7 +41,7 @@
            password
            required />
 
-    <div class="invalid-feedback mb-2" *ng-if="senha.invalid && (senha.dirty || senha.touched)">
+    <div class="invalid-feedback mb-2" *ngIf="senha.invalid && (senha.dirty || senha.touched)">
       <div *ngIf="senha.errors.required">
         Senha deve ser informada
       </div>
@@ -49,10 +49,12 @@
 
 
 
-    <button class="btn btn-primary  btn-block" type="submit" (click)="entrar()" [disabled] ="ativar_spinner">
+    <button class="btn btn-primary  btn-block" type="submit" (click)="entrar()" [disabled]="ativar_spinner">
       <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
       Entrar
     </button>
+
+    <div>Novo por aqui? <a [routerLink]='["/novo-usuario"]'>Cadastre-se</a></div>
 
     <!--<button class="btn btn-primary" type="button" disabled>
       <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
@@ -61,7 +63,7 @@
 
 
 
-    <div class="alert-danger" *ng-if="mensagem">
+    <div class="alert-danger" *ngIf="mensagem">
       {{ mensagem }}
 
     </div>

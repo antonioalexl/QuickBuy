@@ -20,7 +20,7 @@ export class ProdutoServico implements OnInit {
   
 
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    this._baseURL = baseURL;
+    this._baseURL = baseUrl;
 
   }
 

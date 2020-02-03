@@ -14,10 +14,30 @@ import { Produto } from "../modelo/produto";
 
 export class ProdutoComponent implements OnInit {
   public produto: Produto
+  public arquivoSelecionado: File;
+  public ativar_spiner = true;
 
-    ngOnInit(): void {
-      this.produto = new Produto();
+  ngOnInit(): void {
+    this.produto = new Produto();
   }
+  public inputChange(files: FileList) {
+    this.arquivoSelecionado = files.item(0);
+    //alert(this.arquivoSelecionado.name);
+    this.produtoServico.enviarArquivo(this.arquivoSelecionado)
+      .subscribe(
+        nomeArquivo => {
+
+          this.produto.nomeArquivo = nomeArquivo;
+          console.log(nomeArquivo)
+          this.ativar_spiner = false;
+        }
+        , e => {
+          console.log(e.error)
+          this.ativar_spiner = false;
+        });
+
+  }
+
   constructor(private produtoServico: ProdutoServico) {
 
 
@@ -43,5 +63,6 @@ export class ProdutoComponent implements OnInit {
 
       );
   }
+
 }
 

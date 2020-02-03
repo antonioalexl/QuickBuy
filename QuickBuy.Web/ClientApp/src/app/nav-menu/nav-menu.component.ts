@@ -33,4 +33,9 @@ export class NavMenuComponent {
     this.router.navigate(['/entrar']);
 
   }
+  get usuario() {
+
+    return this.usuarioServico.usuario;
+  }
+
 }

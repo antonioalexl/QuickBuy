@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
@@ -40,7 +41,9 @@ namespace QuickBuy.Web
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
+            //services.AddSingleton<IHttpHostingEnvironment, HttpContextAccessor>();
 
 
             services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
